@@ -12,19 +12,20 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
-         stage('Deploye') {
-            steps {
-                sh 'sudo cp target/*.war /home/ubuntu/apache-tomcat-9.0.117/webapps/'
-            }
-        }
+        
         stage('Artifact in s3') {
     steps {
         s3Upload(
             bucket: 'amazone-s3-bucket-123',
-            file: 'target/my-webapp-1.0-SNAPSHOT.war'
+            file: 'target/my-webapp.war'
         )
     }
 }
+ stage('Deploye') {
+            steps {
+                sh 'cp target/*.war /home/ubuntu/apache-tomcat-9.0.117/webapps/'
+            }
+        }
     }
 }
        
