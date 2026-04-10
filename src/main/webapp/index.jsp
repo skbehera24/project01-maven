@@ -72,7 +72,7 @@
 
     <div class="food-card">
         <img src="https://via.placeholder.com/250x150" alt="Pasta">
-        <h3>GYANA-01</h3>
+        <h3>KUBEBYTES</h3>
         <p>Creamy white sauce pasta</p>
         <p><b>₹249</b></p>
         <button class="btn" onclick="order('Pasta')">Order Now</button>
