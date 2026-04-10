@@ -22,7 +22,7 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
-         stage('Deploy') {
+         stage('Deploying') {
             steps {
                 sh 'cp target/*.war /home/ubuntu/apache-tomcat-9.0.117/webapps/'
             }
