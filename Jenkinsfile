@@ -17,6 +17,11 @@ pipeline {
                 sh 'sudo cp target/*.war /home/ubuntu/apache-tomcat-9.0.117/webapps/'
             }
         }
+        stage('Artifact in s3') {
+            steps {
+                s3Upload acl: 'Private', bucket: 'amazone-s3-bucket-123', cacheControl: '', excludePathPattern: '', file: '**/*.war', includePathPattern: '', metadatas: [''], redirectLocation: '', sseAlgorithm: '', tags: '', text: '', workingDir: ''
+            }
+        }
     }
 }
        
