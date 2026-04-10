@@ -12,6 +12,11 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
+         stage('Deploye') {
+            steps {
+                sh 'sudo cp target/*.war tomcat/webapps/'
+            }
+        }
     }
 }
        
