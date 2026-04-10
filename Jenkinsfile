@@ -7,6 +7,11 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/sthita933/project01-maven.git'
             }
         }
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
     }
 }
        
