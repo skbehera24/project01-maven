@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Artifact in s3') {
             steps {
-                s3Upload acl: 'Private', bucket: 'amazone-s3-bucket-123', cacheControl: '', excludePathPattern: '', file: '**/*.war', includePathPattern: '', metadatas: [''], redirectLocation: '', sseAlgorithm: '', tags: '', text: '', workingDir: ''
+                s3Upload acl: 'Private', bucket: 'amazone-s3-bucket-123', cacheControl: '', excludePathPattern: '', file: 'target/*.war', includePathPattern: '', metadatas: [''], redirectLocation: '', sseAlgorithm: '', tags: '', text: '', workingDir: ''
             }
         }
     }
