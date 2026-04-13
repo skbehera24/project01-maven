@@ -22,7 +22,11 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
-    
+        stage('s3') {
+            steps {
+                s3Upload acl: 'Private', bucket: 'amazone-s3-bucket-123', cacheControl: '', excludePathPattern: '', file: 'target/my-webapp.war', includePathPattern: '', metadatas: [''], redirectLocation: '', sseAlgorithm: '', tags: '', text: '', workingDir: ''
+            }
+        }
          stage('Deploying code ') {
             steps {
                 sh 'cp target/*.war /home/ubuntu/apache-tomcat-9.0.117/webapps/'
