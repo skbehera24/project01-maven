@@ -24,7 +24,7 @@ pipeline {
         }
         stage('s3') {
             steps {
-                s3Upload acl: 'Private', bucket: 'amazone-s3-bucket-123', file: 'target/my-webapp.war'
+                s3Upload acl: 'Private', file: 'target/*.war', text: 'jenkins--s3-artifact-store'
             }
         }
          stage('Deploying code ') {
