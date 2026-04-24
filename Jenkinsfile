@@ -38,7 +38,6 @@ pipeline {
 
         stage('Deploy Code') {
             steps {
-                rm -rf ~/tomcat/webapps/my-webapp
                 rm -f ~/tomcat/webapps/my-webapp.war
                 sh 'cp target/my-webapp.war /home/ubuntu/tomcat/webapps/'
             }
