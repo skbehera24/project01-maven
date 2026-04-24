@@ -31,14 +31,14 @@ pipeline {
                 s3Upload(
                     acl: 'Private',
                     bucket: 'jenkins--s3-artifact-store',
-                    file: 'target/*.war'
+                    file: 'target/my-webapp.war'
                 )
             }
         }
 
         stage('Deploy Code') {
             steps {
-                sh 'cp target/*.war /home/ubuntu/apache-tomcat-9.0.117/webapps/'
+                sh 'cp target/my-webapp.war /home/ubuntu/apache-tomcat-9.0.117/webapps/'
             }
         }
     }
