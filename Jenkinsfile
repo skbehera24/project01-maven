@@ -2,32 +2,41 @@ pipeline {
     agent any
 
     stages {
-        stage('git checkout') {
+        stage('Git Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/sthita933/project01-maven.git'
             }
         }
-         stage('Compilitation') {
+
+        stage('Compilation') {
             steps {
                 sh 'mvn clean compile'
             }
         }
-         stage('Testing code') {
+
+        stage('Testing Code') {
             steps {
-                sh 'mvn clean test'
+                sh 'mvn test'
             }
         }
-         stage('Pacakge the code ') {
+
+        stage('Package Code') {
             steps {
-                sh 'mvn clean package'
+                sh 'mvn package'
             }
         }
-        stage('s3') {
+
+        stage('Upload to S3') {
             steps {
-                s3Upload acl: 'Private', file: 'target/*.war',bucket: 'jenkins--s3-artifact-store'
+                s3Upload(
+                    acl: 'Private',
+                    bucket: 'jenkins--s3-artifact-store',
+                    file: 'target/*.war'
+                )
             }
         }
-         stage('Deploying code ') {
+
+        stage('Deploy Code') {
             steps {
                 sh 'cp target/*.war /home/ubuntu/apache-tomcat-9.0.117/webapps/'
             }
